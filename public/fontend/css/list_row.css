@@ -1,0 +1,89 @@
+.list-row select {
+    padding: 5px 12px 5px 12px;
+    background: white;
+    border: 1px solid #ccc;
+    outline: none;
+    display: inline-block;
+    cursor: pointer;
+}
+.list-row{
+    overflow: auto;
+    float: left;
+    height: auto;
+    width: 84.5%;
+    max-height: 365px;
+    background-color: #ffffff;
+    margin-bottom: 1%;
+    box-shadow:0 0 5px #aaa;
+	-webkit-box-shadow:0 0 3px #aaa;
+	-moz-box-shadow:0 0 3px #aaa;
+  -o-box-shadow:0 0 3px #aaa;
+}
+.panel-header{
+    padding: 10px 15px;
+    color: #2a80b9;
+}
+.panel-body{
+    overflow-x: hidden;
+    padding: 10px;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.panel-body table{
+    font-size: 14px;
+}
+.panel-body td{
+    padding: 5px;
+}
+.center-header {
+    text-align: center;
+    background-color: #eee;
+    color: #333;
+}
+/*------------- btn-control---------------- */
+.btn-control{
+    margin-bottom: 1%;
+    float: right;
+    padding-right: 2%;
+}
+.btn-ct {
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+  
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049; color: white;}
+  
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;color: white;}
+  
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;color: white;}
+  
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;color: white;}
+  
+.default {background-color: #e7e7e7; color: black;} /* Gray */ 
+.default:hover {background: #ddd;color: white;}
+
+.btn-xs{
+    color: #fff;
+}

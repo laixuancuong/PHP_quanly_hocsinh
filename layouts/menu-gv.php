@@ -1,0 +1,16 @@
+<div class="menu-main">
+    <div class="menu-active">
+        <button class="btn-menu"><i class="fa fa-bars"></i> Menu</button>
+    </div>
+    <div class="sidebar">
+        <a href="/qlhs_ht/gv/lophoc.php"><img style="width: 50px; width: 50px;" src="../img/lop_hoc.png"></i>Lớp</a>
+        <a href="/qlhs_ht/gv/monhoc.php"><img style="width: 50px; width: 50px;" src="../img/mon_hoc.png"></i> Môn học</a>
+        <a href="/qlhs_ht/gv/lichhoc.php"><img style="width: 50px; width: 50px;" src="../img/lich_hoc.png"></i> Lịch dạy</a>
+        <a href="/qlhs_ht/gv/baitap.php"><img style="width: 50px; width: 50px;" src="../img/bai_tap.png"></i> Bài tập</a>
+        <a href="/qlhs_ht/gv/hoclieu.php"><img style="width: 50px; width: 50px;" src="../img/hoc_lieu.png"></i> Học liệu</a>
+        <a href="/qlhs_ht/gv/diem.php"><img style="width: 50px; width: 50px;" src="../img/diem.png"></i> Điểm</a>
+        <a href="/qlhs_ht/gv/thongbao.php"><img style="width: 50px; width: 50px;" src="../img/thong_bao.png"></i> Thông báo</a>
+        <a href="/qlhs_ht/gv/tinnhan.php"><img style="width: 50px; width: 50px;" src="../img/tin_nhan.png"></i> Tin nhắn</a>
+    </div>
+</div>
+<!--end-menu-main-->

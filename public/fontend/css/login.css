@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+
+.main-login{
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.login{
+    width: 40%;
+    border: 1px solid #cccccc;
+    padding: 3%;
+    float: left;
+    text-align: center;
+    margin-right: 2%;
+    background-color: #ffffff;
+}
+.login h2{
+    margin-bottom: 5%;
+    color: #2980b9;
+}
+.gt{
+    float: left;
+    width: 58%;
+    border: 1px solid #cccccc;
+    padding: 1%;
+    background-color: #ffffff;
+
+}
+.gt h4{
+    line-height: 2;
+    border-bottom: 1px solid #2980b9;
+    margin-bottom: 1%;
+}
+.sp{
+  border-top: 1px solid #cccccc;
+  line-height: 20px;
+  padding-top: 5%;
+}
+/*--seting-login--*/
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #2980b9;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.mk{
+  margin: 3%;
+  line-height: 1;
+}
+
+.sp h4{
+  margin-bottom: 1%;
+  line-height: 25px;
+  width: 50%;
+  margin: auto;
+  border-bottom: 1px solid #cccccc;
+}
+.phone-htro{
+  float: left;
+  line-height: 30px;
+}
+.email-htro{
+  float: right;
+  line-height: 30px;
+}

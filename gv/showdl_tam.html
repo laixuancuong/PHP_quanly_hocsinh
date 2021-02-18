@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title> Example </title>
+        <style>
+              table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+        </style>
+</head>
+<body>    
+        <select>
+             <option>Toán</option>
+             <option>Văn</option>
+             <option>Vật lý</option>
+             <option>Lịch sữ</option>
+       </select>
+       <p style='display:inline'> Tên học sinh : </p>
+       <input type='text' name='txtName'/>
+       <button> Nhập </button>
+       <select> 
+       </select>
+       <button> Xóa dòng </button>
+       <table>
+           <tr>
+             <th> Tên môn học</th>              
+             <th> Tên học sinh</th>
+           </tr>
+       </table>
+       <script  type='text/javascript'>
+              select = document.querySelectorAll('select'); // trả về danh sách các lựa chọn
+table = document.querySelector('table'); 
+txt = document.querySelector('input');
+btn = document.querySelectorAll('button'); // trả về danh sách nút
+i= 0;
+  // thêm vào bảng
+ btn[0].onclick = function()
+ {
+     var row = table.insertRow(1);
+     var cell1 = row.insertCell(0);
+     var cell2 = row.insertCell(1);
+     cell1.innerHTML = select[0].value;
+     cell2.textContent = txt.value;
+     option = document.createElement('option');
+     option.text = i+1;
+     select[1].add(option);
+     i++;
+ };
+// xóa dòng
+btn[1].onclick = function()
+{
+   table.deleteRow(select[1].value); 
+   select[1].remove(select[1].selectedIndex);
+}
+
+
+       </script>
+</body>
+</html>
