@@ -81,7 +81,7 @@
                                         $stt = 1;
                                         if(isset($_POST['search-lop'])){
                                             $id_namhoc = $_POST["id_namhoc"];
-                                            $sql = "SELECT * FROM phancong pc INNER JOIN lop l ON l.malh = pc.malh INNER JOIN hoclieu hl ON hl.mapc = pc.mapc INNER JOIN phancong_cn pccn ON l.malh = pccn.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn
+                                            $sql = "SELECT * FROM phancong pc INNER JOIN phancong_cn pccn ON pccn.id_pc_cn = pc.id_pc_cn  INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN hoclieu hl ON hl.mapc = pc.mapc INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn
                                             WHERE pc.id_namhoc = ".$id_namhoc." AND pccn.id_namhoc = pc.id_namhoc AND  pclh.mahs = ".$_SESSION['user_hs']."
                                                 ";
                                             $dl = $conn->query($sql);

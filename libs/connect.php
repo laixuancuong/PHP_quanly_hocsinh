@@ -8,7 +8,7 @@
     $account = $conn->query($sql);
     $sql = "SELECT * FROM khoi" ;
     $khoi = $conn->query($sql);
-    $sql = "SELECT * FROM kyhoc ORDER BY id_kyhoc DESC";
+    $sql = "SELECT * FROM kyhoc kh INNER JOIN namhoc nh ON nh.id_namhoc = kh.id_namhoc ORDER BY id_kyhoc DESC";
     $kyhoc = $conn->query($sql);
     $sql = "SELECT * FROM khoahoc";
     $khoahoc = $conn->query($sql);

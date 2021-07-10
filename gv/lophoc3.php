@@ -7,10 +7,11 @@
             <div class="list-row">
                 <div class="panel-header" style="background: white; border-bottom: 1px solid #dddddd">
                     <table style="width: 100%">
+                    <form action="" method="POST">
                         <tbody>
                             <tr>
                                 <td>
-                                    <h4>Quản lý lớp học</h4>
+                                    <h4>Quản lý lớp học chủ nhiệm</h4>
                                 </td>
                                 <td style="float: right">
                                     <table>
@@ -18,7 +19,7 @@
                                             <tr>
                                                 <td><span style="margin-right: 10px">Năm học: </span></td>
                                                 <td>
-                                                    <select class="subject-select" style="width:150px;">
+                                                    <select name='id_namhoc' type='submit' class="subject-select" style="width:150px; margin-right: 10px; ">
                                                             <?php 
                                                                     foreach($namhoc as $row ){
                                                                          echo "
@@ -28,28 +29,32 @@
                                                             ?>
                                                     </select>
                                                 </td>
+                                                <td>
+                                                    <span style="margin-right: 10px;"><button style=" height: 30px;" class="btn-ct info" name="search-lop"><i class="fa fa-search"></i></button></span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </td>
                             </tr>
                         </tbody>
+                    </form>
                     </table>
                 </div>
                 <!--end-panel-header-->
-                <form action="" method="POST">
+                <form action="/qlhs/libs/function.php" method="POST">
                     <div class="panel-body">
                         <table cellpadding="10">
                             <tbody>
                                 <tr>
-                                    <td><span>Tên lớp: </span></td>
+                                    <td><span>Lớp: </span></td>
                                     <td>
-                                        <select name="malop" id="">
+                                        <select name="id_pc_cn" id="">
                                             <option value="">--chọn--</option>
                                             <?php 
-                                                    foreach($gv_lop as $row ){
+                                                    foreach($lop as $row ){
                                                          echo "
-                                                        <option value=".$row['malh'].">".$row['tenlop']."</option>
+                                                        <option value=".$row['id_pc_cn'].">".$row['tenlop']."</option>
                                                         ";
                                                     }
                                             ?>
@@ -76,21 +81,12 @@
                 </div>
                 <!--end-list-row-->
                 <div class="btn-control">
-                    <button class="btn-ct success" name="searchHS" >Tìm</button>
-                    <button class="btn-ct info">Thêm</button>
+                    <button class="btn-ct success" name="add-gv_lop">Thêm</button>
                 </div>
             </form>
-            <?php
-                if(isset($_POST['searchHS'])){
-                    $search = "search";
-                    $sql_dl = "SELECT * FROM hocsinh hs INNER JOIN lop l ON l.malh = hs.malh INNER JOIN giaovien gv ON gv.magv = l.magv WHERE l.malh = ".$_POST['malop']."";
-                    $result_dlhs = $conn->query($sql_dl);
-                }
-            ?>
-
             <div class="list-row">
                     <div class="topnav">
-                        <a class="active" href="/qlhs_ht/gv//index.php">Trang chủ</a>
+                        <a class="active" href="/qlhs/gv/index.php">Trang chủ</a>
                         <div class="search-container">
                             <form action="" method="POST">
                                 <input type="text" placeholder="Search.." name="ten">
@@ -107,28 +103,23 @@
                                 <tr>
                                     <th class="center-header" scope="col" style="width:1%;">STT</th>
                                     <th class="center-header" scope="col" >Họ tên</th>
+                                    <th class="center-header" scope="col" >Mã học sinh</th>
                                     <th class="center-header" scope="col" >Lớp</th>
                                     <th class="center-header" scope="col" >Ngày sinh</th>
                                     <th class="center-header" scope="col" >Địa chỉ</th>
                                     <th class="center-header" scope="col" >Số điện thoại</th>
+                                    <th class="center-header" scope="col" >Thao tác</th>
                                 </tr>
                                 <tr>
                                         <?php
                                         $stt = 1;
-                                        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                                            // Thiết lập mảng lưu lỗi => Mặc định rỗng
-
-                                            $error = array();
-                                            if (empty($_POST['malop'])) {
-                                                $error['malh'] = "Bạn cần chọn lớp";
-                                            } else {
-                                                $malh = $_POST['malop'];
-                                            }
-                                            // Kiểm tra có lỗi hay không
-                                            if (empty($error)) {
-                                                switch ($search) {
-                                                    case "search":
-                                                    foreach($result_dlhs as $row){
+                                        if(isset($_POST['search-lop'])){
+                                            $id_namhoc = $_POST["id_namhoc"];
+                                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs
+                                            WHERE pccn.id_namhoc = ".$id_namhoc." AND  pccn.magv = ".$_SESSION['user_gv']." ORDER BY pclh.id_pc_lh DESC
+                                                ";
+                                            $dl = $conn->query($sql);
+                                            foreach($dl as $row){
                                                         echo "
                                                         <tr class='odd gradeX' id='hienthi'>
                                                             <td align='center'>
@@ -136,42 +127,44 @@
                                                             </td>
                                                             
                                                             <td align='center'>".$row['hoten_dem']." ".$row['ten_hs']."</td>
+                                                            <td align='center'>".$row['mahs']."</td>
                                                             <td align='center'>".$row['tenlop']."</td>
                                                             <td align='center'>".$row['ngaysinh']."</td>
                                                             <td align='center'>".$row['diachi']."</td>
                                                             <td align='center'>".$row['sodt']."</td>
+                                                            <td align='center' style='width: 12%'>
+                                                                <a class='btn btn-xs btn-danger' align='center' href='delete.php?id_pc_lh=".$row['id_pc_lh']."'> <i class='fa fa-times'></i> Xoá</a>
+                                                            </td>
                                                         </tr>
                                                         ";
                                                         $stt ++;
                                                     }
-                                                    break;
-                                                    default:
-                                                            echo "
-                                                            <tr class='odd gradeX'>
-                                                                <td align='center'>Dữ liệu rỗng</td>
-                                                            </tr>
-                                                            ";
-                                                    break;
-                                                }
-
-                                            }
-                                        }
-                                        else{
-                                            echo "
-                                                            <tr class='odd gradeX'>
-                                                                Không có dữ liệu hiển thị
-                                                            </tr>
-                                                            ";
-                                        }
-
-                                    ?>
-                                                    <tr class='odd gradeX' id='hienthi'>
-                                                        <tr>
-                                                            <?php if (isset($error['malh'])) echo $error['malh']; ?>
+                                        }else{
+                                            foreach($dl_lop as $row){
+                                                        echo "
+                                                        <tr class='odd gradeX' id='hienthi'>
+                                                            <td align='center'>
+                                                                ".$stt."
+                                                            </td>
+                                                            
+                                                            <td align='center'>".$row['hoten_dem']." ".$row['ten_hs']."</td>
+                                                            <td align='center'>".$row['mahs']."</td>
+                                                            <td align='center'>".$row['tenlop']."</td>
+                                                            <td align='center'>".$row['ngaysinh']."</td>
+                                                            <td align='center'>".$row['diachi']."</td>
+                                                            <td align='center'>".$row['sodt']."</td>
+                                                            <td align='center' style='width: 12%'>
+                                                                <a class='btn btn-xs btn-danger' align='center' href='delete.php?id_pc_lh=".$row['id_pc_lh']."'> <i class='fa fa-times'></i> Xoá</a>
+                                                            </td>
                                                         </tr>
-                                                           
-                                                        
-                                                    </tr>
+                                                        ";
+                                                        $stt ++;
+                                                    }
+                                        }
+                                        if ($stt<=1) {
+                                            echo "<tr class='odd gradeX' id='hienthi'>Không có dữ liệu</td>";
+                                        }
+                                    ?>
                                 </tr>
                             </tbody>
                         </table>

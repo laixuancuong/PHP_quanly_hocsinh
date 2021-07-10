@@ -14,7 +14,7 @@
                     WHERE pc.magv = ".$_SESSION['user_gv']."
                         ";
     $gv_mon = $conn->query($sql);
-    $sql = "SELECT * FROM phancong pc INNER JOIN lop l ON l.malh = pc.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh
+    $sql = "SELECT * FROM phancong pc INNER JOIN phancong_cn pccn ON pccn.id_pc_cn = pc.id_pc_cn  INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh
     WHERE pc.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong) AND  cngv.magv = ".$_SESSION['user_gv']."
                                                 ";
     $dl_mon = $conn->query($sql);
@@ -32,7 +32,7 @@
                         ";
     $gv_lop = $conn->query($sql);
 /*--Học liệu--------------------*/
-    $sql = "SELECT * FROM phancong pc INNER JOIN lop l ON l.malh = pc.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh INNER JOIN hoclieu hl ON hl.mapc = pc.mapc
+    $sql = "SELECT * FROM phancong pc INNER JOIN phancong_cn pccn ON pccn.id_pc_cn = pc.id_pc_cn  INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh INNER JOIN hoclieu hl ON hl.mapc = pc.mapc
     WHERE pc.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong) AND  cngv.magv = ".$_SESSION['user_gv']."
     ORDER BY hl.mahl DESC
                         ";

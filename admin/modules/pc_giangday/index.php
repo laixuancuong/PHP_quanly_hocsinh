@@ -66,7 +66,7 @@
             <?php
                 if(isset($_POST['search'])){
                     $search = "ds";
-                    $sql_dl = "SELECT * FROM phancong pc INNER JOIN chucnang_gv cngv ON pc.id_cn_gv = cngv.id_cn_gv INNER JOIN giaovien gv ON gv.magv = cngv.magv INNER JOIN monhoc mh ON mh.mamh = cngv.mamh INNER JOIN khoi k ON k.makhoi = cngv.makhoi INNER JOIN namhoc nh ON pc.id_namhoc = nh.id_namhoc INNER JOIN lop l ON pc.malh = l.malh WHERE nh.id_namhoc = ".$_POST['id_namhoc']." AND k.makhoi = ".$_POST['makhoi']."";
+                    $sql_dl = "SELECT * FROM phancong pc INNER JOIN chucnang_gv cngv ON pc.id_cn_gv = cngv.id_cn_gv INNER JOIN giaovien gv ON gv.magv = cngv.magv INNER JOIN monhoc mh ON mh.mamh = cngv.mamh INNER JOIN khoi k ON k.makhoi = cngv.makhoi INNER JOIN phancong_cn pccn ON pc.id_pc_cn = pccn.id_pc_cn INNER JOIN namhoc nh ON pc.id_namhoc = nh.id_namhoc INNER JOIN lop l ON pccn.malh = l.malh WHERE nh.id_namhoc = ".$_POST['id_namhoc']." AND k.makhoi = ".$_POST['makhoi']."";
                     $result_dlhs = $conn->query($sql_dl);
                 }
             ?>
@@ -87,10 +87,9 @@
                                     <thead>
                                         <tr>
                                             <th align='center'>STT</th>
-                                            <th align='center'>Họ tên</th>
+                                            <th align='center'>Họ tên giáo viên</th>
                                             <th align='center'>Môn giảng dạy</th>
                                             <th align='center'>Lớp</th>
-                                            <th align='center'>Khối</th>
                                             <th align='center'>Năm học</th>
                                             <th align='center'>Thao tác</th>
                                         </tr>
@@ -121,7 +120,6 @@
                                                                     <td align='center'>".$row['hoten_dem']." ".$row['ten_gv']."</td>
                                                                     <td align='center'>".$row['tenmh']."</td>
                                                                     <td align='center'>".$row['tenlop']."</td>
-                                                                    <td align='center'>".$row['tenkhoi']."</td>
                                                                     <td align='center'>".$row['namhoc']."</td>
                                                                     <td class='center' style='width: 12%'>
                                                                         <a class='btn btn-xs btn-info' align='center' href='edit.php?id=".$row['mapc']."'> <i class='fa fa-edit'></i> Sửa</a>
@@ -145,7 +143,6 @@
                                                                     <td align='center'>".$row['hoten_dem']." ".$row['ten_gv']."</td>
                                                                     <td align='center'>".$row['tenmh']."</td>
                                                                     <td align='center'>".$row['tenlop']."</td>
-                                                                    <td align='center'>".$row['tenkhoi']."</td>
                                                                     <td align='center'>".$row['namhoc']."</td>
                                                                     <td class='center' style='width: 12%'>
                                                                         <a class='btn btn-xs btn-info' align='center' href='edit.php?id=".$row['mapc']."'> <i class='fa fa-edit'></i> Sửa</a>

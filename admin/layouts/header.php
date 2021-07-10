@@ -12,24 +12,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hệ quản trị</title>
-    <link rel="shortcut icon" type="image/icon-logo" href="/qlhs_ht/img/logo.png">
+    <link rel="shortcut icon" type="image/icon-logo" href="/qlhs/img/logo.png">
     <!-- Core CSS - Include with every page -->
-    <link href="/qlhs_ht/public/admin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/qlhs_ht/public/admin/css/font-awesome.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/font-awesome.css" rel="stylesheet">
 
     <!-- Page-Level Plugin CSS - Dashboard -->
-    <link href="/qlhs_ht/public/admin/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-    <link href="/qlhs_ht/public/admin/css/plugins/timeline/timeline.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/plugins/timeline/timeline.css" rel="stylesheet">
 
     <!-- Page-Level Plugin CSS - Tables -->
-    <link href="/qlhs_ht/public/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- SB Admin CSS - Include with every page -->
-    <link href="/qlhs_ht/public/admin/css/sb-admin.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/sb-admin.css" rel="stylesheet">
     <!-- css add -->
-    <link href="/qlhs_ht/public/admin/css/style.css" rel="stylesheet" />
+    <link href="/qlhs/public/admin/css/style.css" rel="stylesheet" />
     <!-- ckeditor -->
-    <script type="text/javascript" src="/qlhs_ht/admin/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/qlhs/admin/ckeditor/ckeditor.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -61,7 +61,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/qlhs_ht/admin/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        <li><a href="/qlhs/admin/logout.php"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -84,19 +84,19 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/qlhs_ht/admin/index.php"><i class="fa fa-dashboard fa-fw"></i> Trang chủ</a>
+                            <a href="/qlhs/admin/index.php"><i class="fa fa-dashboard fa-fw"></i> Trang chủ</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/hocsinh/index.php">Học sinh</a>
+                                    <a href="/qlhs/admin/modules/hocsinh/index.php">Học sinh</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/giaovien/index.php">Giáo viên</a>
+                                    <a href="/qlhs/admin/modules/giaovien/index.php">Giáo viên</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/admin/index.php">Admin</a>
+                                    <a href="/qlhs/admin/modules/admin/index.php">Admin</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -108,7 +108,7 @@
                                     <a href="/#">Danh mục</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tin tức</a>
+                                    <a href="/qlhs/admin/modules/news/index.php">Tin tức</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -117,25 +117,28 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/lophoc/index.php">Lớp học</a>
+                                    <a href="/qlhs/admin/modules/namhoc/index.php">Năm học</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/monhoc/index.php">Môn học</a>
+                                    <a href="/qlhs/admin/modules/lophoc/index.php">Lớp học</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/lichhoc/index.php">Lịch học</a>
+                                    <a href="/qlhs/admin/modules/monhoc/index.php">Môn học</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/pc_giangday/index.php">Phân công giảng dạy</a>
+                                    <a href="/qlhs/admin/modules/lichhoc/index.php">Lịch học</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/pc_chunhiem/index.php">Phân công chủ nhiệm</a>
+                                    <a href="/qlhs/admin/modules/pc_giangday/index.php">Phân công giảng dạy</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/pc_lophoc/index.php">Phân lớp học</a>
+                                    <a href="/qlhs/admin/modules/pc_chunhiem/index.php">Phân công chủ nhiệm</a>
                                 </li>
                                 <li>
-                                    <a href="/qlhs_ht/admin/modules/cn_giaovien/index.php">Chức năng giáo viên</a>
+                                    <a href="/qlhs/admin/modules/pc_lophoc/index.php">Phân lớp học</a>
+                                </li>
+                                <li>
+                                    <a href="/qlhs/admin/modules/cn_giaovien/index.php">Chức năng giáo viên</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

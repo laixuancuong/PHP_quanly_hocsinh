@@ -58,7 +58,7 @@ require_once __DIR__. "../libs/connect.php";
                 //tiến hành lưu tên đăng nhập vào session để tiện xử lý sau này
                 $_SESSION['user_hs'] = $username;
                 // chuyển hướng trang web tới một trang index.php
-                header('Location: /qlhs_ht/index.php');
+                header('Location: /qlhs/index.php');
             }
         }
     }

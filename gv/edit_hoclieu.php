@@ -126,7 +126,7 @@ $ud_hl = mysqli_query($conn,"SELECT * FROM phancong pc INNER JOIN lop l ON l.mal
             </form>
             <div class="list-row">
                     <div class="topnav">
-                        <a class="active" href="/qlhs_ht/gv//index.php">Trang chủ</a>
+                        <a class="active" href="/qlhs/gv//index.php">Trang chủ</a>
                         <div class="search-container">
                             <form action="" method="POST">
                                 <input type="text" placeholder="Search.." name="ten">

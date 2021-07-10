@@ -42,16 +42,53 @@
                     </table>
                 </div>
                 <!--end-panel-header-->
-                <form action="" method="POST">
+                <?php 
+                    $stt = 1;
+                                        if(isset($_POST['search-lop'])){
+                                            $id_namhoc = $_POST["id_namhoc"];
+                                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs INNER JOIN namhoc nh ON nh.id_namhoc = pccn.id_namhoc
+                                            WHERE pccn.id_namhoc = ".$id_namhoc." AND l.malh = (SELECT pccn.malh FROM phancong_lh pclh INNER JOIN phancong_cn pccn ON pclh.id_pc_cn = pccn.id_pc_cn WHERE pccn.id_namhoc = ".$id_namhoc." AND pclh.mahs = ".$_SESSION['user_hs'].")
+                                                ";
+                                            $dl = $conn->query($sql);
+                                            $sql1 = "SELECT * FROM phancong_cn pccn INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN giaovien gv ON gv.magv = pccn.magv
+                                                WHERE pclh.mahs = ".$_SESSION['user_hs']." AND pccn.id_namhoc = ".$id_namhoc." ";
+                                            $gv_cn = $conn->query($sql1);
+                                        }else{
+                                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs INNER JOIN namhoc nh ON nh.id_namhoc = pccn.id_namhoc
+                                            WHERE pccn.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong_cn) AND l.malh = (SELECT pccn.malh FROM phancong_lh pclh INNER JOIN phancong_cn pccn ON pclh.id_pc_cn = pccn.id_pc_cn WHERE pccn.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong_cn) AND pclh.mahs = ".$_SESSION['user_hs'].")
+                                                ";
+                                            $dl = $conn->query($sql);
+                                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN giaovien gv ON gv.magv = pccn.magv
+                                                WHERE pclh.mahs = ".$_SESSION['user_hs']." AND pccn.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong_cn) ";
+                                            $gv_cn = $conn->query($sql);
+                                        }
+                 ?>
+                <form action="/qlhs/hs/thongtin.php" method="POST">
                     <div class="panel-body">
                         <table cellpadding="10">
                             <tbody>
+                                <tr>
+                                    <td><span style="margin-right: 10px">Chủ nhiệm: </span></td>
+                                    <td>
+                                        <select name='magv' type='submit' class="subject-select" style="width:150px; margin-right: 10px; ">
+                                                <?php 
+                                                        foreach($gv_cn as $rows ){
+                                                            echo "
+                                                            <option value=".$rows['magv'].">".$rows['hoten_dem']." ".$rows['ten_gv']."</option>
+                                                            ";
+                                                        }
+                                                ?>
+                                        </select>
+                                    </td>
                             </tbody>
                         </table>
                     </div>
                     <!--end-panel-body-->
                 </div>
                 <!--end-list-row-->
+                <div class="btn-control">
+                    <button class="btn-ct success" name="thongtin">Xem thông tin</button>
+                </div>
             </form>
             <div class="list-row">
                     <div class="topnav">
@@ -74,20 +111,10 @@
                                     <th class="center-header" scope="col" >Mã sinh viên</th>
                                     <th class="center-header" scope="col" >Lớp</th>
                                     <th class="center-header" scope="col" >Năm học</th>
-                                    <th class="center-header" scope="col" >Chủ nhiệm</th>
                                 </tr>
                                 <tr>
                                     <?php
-                                        $stt = 1;
-                                        if(isset($_POST['search-lop'])){
-                                            $id_namhoc = $_POST["id_namhoc"];
-                                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs INNER JOIN namhoc nh ON nh.id_namhoc = pccn.id_namhoc
-                                            WHERE pccn.id_namhoc = ".$id_namhoc." AND l.malh = (SELECT pccn.malh FROM phancong_lh pclh INNER JOIN phancong_cn pccn ON pclh.id_pc_cn = pccn.id_pc_cn WHERE pccn.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong_cn) AND pclh.mahs = ".$_SESSION['user_hs'].")
-                                                ";
-                                            $dl = $conn->query($sql);
-                                            $sql1 = "SELECT * FROM phancong_cn pccn INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN giaovien gv ON gv.magv = pccn.magv
-                                                WHERE pclh.mahs = ".$_SESSION['user_hs']." AND pccn.id_namhoc = ".$id_namhoc." ";
-                                            $gv_cn1 = $conn->query($sql1);
+                                        
                                             foreach($dl as $row){
                                                         echo "
                                                         <tr class='odd gradeX' id='hienthi'>
@@ -98,36 +125,10 @@
                                                             <td align='center'>".$row['mahs']."</td>
                                                             <td align='center'>".$row['tenlop']."</td>
                                                             <td align='center'>".$row['namhoc']."</td>
-                                                        
                                                         ";
-                                                        foreach($gv_cn1 as $rows){
-                                                            echo "
-                                                                <td align='center'>".$rows['hoten_dem']." ".$rows['ten_gv']."</td>
-                                                            </tr>";
-                                                        }
                                                         $stt ++;
                                                     }
-                                        }else{
-                                            foreach($dl_lop as $row){
-                                                        echo "
-                                                        <tr class='odd gradeX' id='hienthi'>
-                                                            <td align='center'>
-                                                                ".$stt."
-                                                            </td>
-                                                            <td align='center'>".$row['hoten_dem']." ".$row['ten_hs']."</td>
-                                                            <td align='center'>".$row['mahs']."</td>
-                                                            <td align='center'>".$row['tenlop']."</td>
-                                                            <td align='center'>".$row['namhoc']."</td>
-                                                        
-                                                        ";
-                                                        foreach($gv_cn as $rows){
-                                                            echo "
-                                                                <td align='center'>".$rows['hoten_dem']." ".$rows['ten_gv']."</td>
-                                                            </tr>";
-                                                        }
-                                                        $stt ++;
-                                                    }
-                                        }
+                                        
                                         if ($stt<=1) {
                                             echo "<tr class='odd gradeX' id='hienthi'>Không có dữ liệu</td>";
                                         }

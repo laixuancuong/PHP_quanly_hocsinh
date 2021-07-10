@@ -42,6 +42,81 @@
 <!-- End - Đăng nhập -->
 <!-- Thêm  -->
 <?php
+    /*---Năm học---*/
+        if (isset($_POST['add-nh'])){
+            $dk_query = mysqli_query($conn,"SELECT * FROM namhoc");
+            $dk_items  = mysqli_fetch_array($dk_query);
+            
+            $namhoc= $_POST['namhoc'];
+            if(!$namhoc)
+            {
+                
+                echo 'Vui lòng nhập tên năm học<a href="javascript: history.go(-1)">Trở lại</a>';
+                exit;
+            }
+            else
+            {
+                if ($dk_items['namhoc'] == "$namhoc")
+                {
+                    echo "Tên năm học đã tồn tại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                    exit;
+                }
+                else{
+                    $insert =mysqli_query($conn,"INSERT INTO namhoc (id_namhoc, namhoc) VALUES (NULL,'".$namhoc."')");
+                    header("Location: ../modules/namhoc/index.php");
+                }
+            }
+        }
+        if (isset($_POST['add-kh'])){
+            $dk_query = mysqli_query($conn,"SELECT * FROM khoahoc");
+            $dk_items  = mysqli_fetch_array($dk_query);
+            
+            $tenkhoahoc= $_POST['tenkhoahoc'];
+            $id_namhoc= $_POST['id_namhoc'];
+            if(!$tenkhoahoc)
+            {
+                
+                echo 'Vui lòng nhập tên khoá học<a href="javascript: history.go(-1)">Trở lại</a>';
+                exit;
+            }
+            else
+            {
+                if ($dk_items['tenkhoahoc'] == "$tenkhoahoc")
+                {
+                    echo "Tên khoá học đã tồn tại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                    exit;
+                }
+                else{
+                    $insert =mysqli_query($conn,"INSERT INTO khoahoc (id_khoahoc, tenkhoahoc, id_namhoc) VALUES (NULL,'".$tenkhoahoc."','".$id_namhoc."')");
+                    header("Location: ../modules/namhoc/index.php");
+                }
+            }
+        }
+        if (isset($_POST['add-hk'])){
+            $dk_query = mysqli_query($conn,"SELECT * FROM kyhoc");
+            $dk_items  = mysqli_fetch_array($dk_query);
+            
+            $tenky= $_POST['tenky'];
+            $id_namhoc= $_POST['id_namhoc'];
+            if(!$tenky)
+            {
+                
+                echo 'Vui lòng nhập tên kỳ học<a href="javascript: history.go(-1)">Trở lại</a>';
+                exit;
+            }
+            else
+            {
+                if ($dk_items['tenky'] == "$tenky")
+                {
+                    echo "Tên kỳ học đã tồn tại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                    exit;
+                }
+                else{
+                    $insert =mysqli_query($conn,"INSERT INTO kyhoc (id_kyhoc, tenky, id_namhoc) VALUES (NULL,'".$tenky."','".$id_namhoc."')");
+                    header("Location: ../modules/namhoc/index.php");
+                }
+            }
+        }
     /*---Lớp học---*/
         if (isset($_POST['add-lh'])){
             $dk_query = mysqli_query($conn,"SELECT * FROM lop");
@@ -197,8 +272,8 @@
             
             $id_namhoc= $_POST['id_namhoc'];
             $id_cn_gv= $_POST['id_cn_gv'];
-            $malh =$_POST['malh'];
-            if($id_namhoc == "" || $malh =="" || $id_cn_gv =="")
+            $id_pc_cn =$_POST['id_pc_cn'];
+            if($id_namhoc == "" || $id_pc_cn =="" || $id_cn_gv =="")
             {
                 
                 echo 'Vui lòng nhập đầy đủ thông tin<a href="javascript: history.go(-1)">Trở lại</a>';
@@ -206,24 +281,20 @@
             }
             else
             {   
-                if ($dk_items['id_namhoc'] == $id_namhoc && $dk_items['id_cn_gv'] == $id_cn_gv && $dk_items['malh'] == $malh)
-                {   
-                    echo "Chức năng này đã tồn tại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                $dk_query = mysqli_query($conn,"SELECT * FROM phancong WHERE id_namhoc = '".$id_namhoc."' AND id_cn_gv = '".$id_cn_gv."' AND id_pc_cn = '".$id_pc_cn."'");
+                $num_rows = mysqli_num_rows($dk_query);
+                if ($num_rows > 0) {
+                    echo "Giáo viên này đã dạy lớp này. <a href='javascript: history.go(-1)'>Trở lại</a>";
                     exit;
                 }
                 else{
-                    $insert =mysqli_query($conn,"INSERT INTO `phancong` (`mapc`, `id_namhoc`, `id_cn_gv`, `malh`) VALUES (NULL,'".$id_namhoc."','".$id_cn_gv."','".$malh."')");
-                    $dk_pc = mysqli_query($conn,"SELECT mapc FROM phancong WHERE mapc = (SELECT MAX(mapc) FROM phancong)");
-                    $dk_mapc  = mysqli_fetch_array($dk_pc);
+                    $insert =mysqli_query($conn,"INSERT INTO `phancong` (`mapc`, `id_namhoc`, `id_cn_gv`, `id_pc_cn`) VALUES (NULL,'".$id_namhoc."','".$id_cn_gv."','".$id_pc_cn."')");
                     header("Location: ../modules/pc_giangday/index.php");
                 }
             }
         }
         /*---Phân công chủ nhiệm---*/
         if (isset($_POST['add-pccn'])){
-            $dk_query = mysqli_query($conn,"SELECT * FROM phancong_cn");
-            $dk_items  = mysqli_fetch_array($dk_query);
-
             $magv= $_POST['magv'];
             $id_namhoc= $_POST['id_namhoc'];
             $malh =$_POST['malh'];
@@ -235,40 +306,72 @@
             }
             else
             {
-                if ($dk_items['magv'] == "$magv" && $dk_items['id_namhoc'] == "$id_namhoc" || $dk_items['malh'] == "$malh" && $dk_items['id_namhoc'] == "$id_namhoc")
-                {
-                    echo "Lớp đã có chủ nhiệm hoặc giáo viên này đã tồn tại trong năm học này. <a href='javascript: history.go(-1)'>Trở lại</a>";
-                    exit;
+                $dk_query = mysqli_query($conn,"SELECT * FROM phancong_cn WHERE id_namhoc = '".$id_namhoc."'");
+                $dk_nh  = mysqli_fetch_array($dk_query);
+                $num_rows = mysqli_num_rows($dk_query);
+                if ($num_rows > 0) {
+                    foreach ($dk_query as $key => $row) {
+                        if ( $magv == $row['magv'])
+                        {
+                            echo "Giáo viên này đã chủ nhiệm lớp khác trong năm học này. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                            exit;
+                        }elseif ($row['malh'] == $malh) {
+                            echo "Lớp đã có giáo viên chủ nhiệm trong năm học này. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                            exit;
+                        }else{
+                            $stt = 1;
+                        }
+                    }
+                    if ($stt = 1) {
+                        $insert =mysqli_query($conn,"INSERT INTO `phancong_cn` (`id_pc_cn`, `magv`, `id_namhoc`, `malh`) VALUES (NULL,'".$magv."','".$id_namhoc."','".$malh."')");
+                        header("Location: ../modules/pc_chunhiem/index.php");
+                    }
                 }
                 else{
                     $insert =mysqli_query($conn,"INSERT INTO `phancong_cn` (`id_pc_cn`, `magv`, `id_namhoc`, `malh`) VALUES (NULL,'".$magv."','".$id_namhoc."','".$malh."')");
                     header("Location: ../modules/pc_chunhiem/index.php");
                 }
+                
             }
         }
         /*---Phân công lớp học---*/
         if (isset($_POST['add-pclh'])){
             $dk_query = mysqli_query($conn,"SELECT * FROM phancong_lh");
             $dk_items  = mysqli_fetch_array($dk_query);
-
-            $mahs= $_POST['mahs'];
-            $id_pc_cn= $_POST['id_pc_cn'];
-            if($mahs == "" || $id_pc_cn =="")
+            $id_pc_cn = $_POST['id_pc_cn'];
+            if ($id_pc_cn == "" ) {
+                echo "Bạn chưa chọn lớp. <a href='javascript: history.go(-1)'>Trở lại</a>";
+            }
+            elseif (isset($_POST['hs'])) {
+                foreach($_POST['hs'] as $mahs) {
+                    $insert =mysqli_query($conn,"INSERT INTO `phancong_lh` (`id_pc_lh`, `mahs`, `id_pc_cn`) VALUES (NULL,'".$mahs."','".$id_pc_cn."')");
+                    header("Location: ../modules/pc_lophoc/index.php");
+                }
+            }
+        }
+    /*---Tin tức---*/
+        if (isset($_POST['add-news'])){
+            $dk_query = mysqli_query($conn,"SELECT * FROM news");
+            $dk_items  = mysqli_fetch_array($dk_query);
+            $nd_chinh= $_POST['nd_chinh'];
+            $noidung =$_POST['noidung'];
+            $id_account =$_POST['id_account'];
+            if(!$nd_chinh)
             {
                 
-                echo 'Vui lòng nhập đầy đủ thông tin<a href="javascript: history.go(-1)">Trở lại</a>';
+                echo 'Vui lòng nhập nội dung chính<a href="javascript: history.go(-1)">Trở lại</a>';
                 exit;
             }
             else
             {
-                if ($dk_items['mahs'] == "$mahs" && $dk_items['id_pc_cn'] == "$id_pc_cn")
+                if ($dk_items['nd_chinh'] == "$nd_chinh")
                 {
-                    echo "Học sinh đã ở trong lớp này. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                    echo "Nội dung đã tồn tại. <a href='javascript: history.go(-1)'>Trở lại</a>";
                     exit;
                 }
                 else{
-                    $insert =mysqli_query($conn,"INSERT INTO `phancong_lh` (`id_pc_lh`, `mahs`, `id_pc_cn`) VALUES (NULL,'".$mahs."','".$id_pc_cn."')");
-                    header("Location: ../modules/pc_lophoc/index.php");
+                    $insert =mysqli_query($conn,"INSERT INTO `news` (`id_news`, `nd_chinh`, `noidung`, `id_account`) VALUES (NULL,'".$nd_chinh."','".$noidung."','".$id_account."')");
+                    header("Location: ../modules/news/index.php");
                 }
             }
         }

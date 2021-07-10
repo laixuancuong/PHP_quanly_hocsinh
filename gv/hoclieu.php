@@ -42,7 +42,7 @@
                     </table>
                 </div>
                 <!--end-panel-header-->
-                <form action="/qlhs_ht/libs/function.php" method="POST" enctype = "multipart/form-data">
+                <form action="/qlhs/libs/function.php" method="POST" enctype = "multipart/form-data">
                     <div class="panel-body">
                         <table cellpadding="10">
                             <tbody>
@@ -82,7 +82,7 @@
             </form>
             <div class="list-row">
                     <div class="topnav">
-                        <a class="active" href="/qlhs_ht/gv//index.php">Trang chủ</a>
+                        <a class="active" href="/qlhs/gv/index.php">Trang chủ</a>
                         <div class="search-container">
                             <form action="" method="POST">
                                 <input type="text" placeholder="Search.." name="ten">
@@ -110,7 +110,7 @@
                                         $stt = 1;
                                         if(isset($_POST['search-lop'])){
                                             $id_namhoc = $_POST["id_namhoc"];
-                                            $sql = "SELECT * FROM phancong pc INNER JOIN lop l ON l.malh = pc.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh INNER JOIN hoclieu hl ON hl.mapc = pc.mapc
+                                            $sql = "SELECT * FROM phancong pc INNER JOIN phancong_cn pccn ON pccn.id_pc_cn = pc.id_pc_cn  INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN namhoc nh ON nh.id_namhoc = pc.id_namhoc INNER JOIN chucnang_gv cngv ON cngv.id_cn_gv = pc.id_cn_gv INNER JOIN monhoc mh ON cngv.mamh = mh.mamh INNER JOIN hoclieu hl ON hl.mapc = pc.mapc
                                             WHERE pc.id_namhoc = ".$id_namhoc." AND  cngv.magv = ".$_SESSION['user_gv']." ORDER BY hl.mahl DESC
                                                 ";
                                             $dl = $conn->query($sql);

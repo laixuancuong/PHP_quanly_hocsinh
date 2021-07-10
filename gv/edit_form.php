@@ -47,7 +47,7 @@ $ud_hl = mysqli_query($conn,"SELECT * FROM phancong pc INNER JOIN lop l ON l.mal
                     </table>
                 </div>
                 <!--end-panel-header-->
-                <form action="/qlhs_ht/libs/function.php" method="POST" enctype = "multipart/form-data">
+                <form action="/qlhs/libs/function.php" method="POST" enctype = "multipart/form-data">
                     <div class="panel-body">
                         <table cellpadding="10">
                             <tbody>

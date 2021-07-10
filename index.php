@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/lophoc.php" target>
+                            <a href="/qlhs/hs/lophoc.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/lop_hoc.png" /></span>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/monhoc.php" target>
+                            <a href="/qlhs/hs/monhoc.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/mon_hoc.png" /></span>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/lichhoc.php" target>
+                            <a href="/qlhs/hs/lichhoc.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/lich_hoc.png" /></span>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/baitap.php" target>
+                            <a href="/qlhs/hs/baitap.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/bai_tap.png" /></span>
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/hoclieu.php" target>
+                            <a href="/qlhs/hs/hoclieu.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/hoc_lieu.png" /></span>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/diem.php" target>
+                            <a href="/qlhs/hs/diem.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/diem.png" /></span>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/thongbao.php" target>
+                            <a href="/qlhs/hs/thongbao.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/thong_bao.png" /></span>
@@ -113,7 +113,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="item">
-                            <a href="/qlhs_ht/hs/tinnhan.php" target>
+                            <a href="/qlhs/hs/tinnhan.php" target>
                                 <div class="item-thumb">
                                     <span class="item-icon"><img style="width: 100px;height: 100px;"
                                             src="img/tin_nhan.png" /></span>
@@ -129,123 +129,8 @@
                 <!--end--row-->
             </div>
             <!--end--content-main-->
-            <div class="news-main">
-                <div class="navbar-news">
-                    <a href="#news">Tin tức</a>
-                </div>
-                <div class="news">
-                    <table class="list-news">
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định cho học sinh...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định cho học sinh...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định cho học sinh...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định cho học sinh...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#"><i class="fa fa-question-circle" aria-hidden="true"
-                                        style="margin-right: 10px"></i></a>
-                            </td>
-                            <td>
-                                <a href="#">Nhà trường quyết định...</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+            <?php require "layouts/news-hs.php";
+            ?>
             <!--end--news-main-->
         </div>
         <!--end--warp-main-->

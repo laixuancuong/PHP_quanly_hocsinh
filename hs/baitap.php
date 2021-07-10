@@ -1,7 +1,7 @@
-<?php require "header-hs.php"; ?>
+<?php require_once __DIR__. "/../layouts/header-hs.php";?>
 <div class="main">
     <div class="wrap-main">
-        <?php require "menu.php"; ?>
+        <?php require_once __DIR__. "/../layouts/menu-hs.php";?>
         <!--end-menu-main-->
         <div class="list-main">
             <div class="list-row">
@@ -222,4 +222,4 @@
     <!--end--warp-main-->
 </div>
 <!--end--main-->
-<?php require "footer.php"; ?>
+<?php require_once __DIR__. "/../layouts/footer.php";?>

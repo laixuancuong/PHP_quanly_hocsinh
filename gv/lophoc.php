@@ -42,7 +42,30 @@
                     </table>
                 </div>
                 <!--end-panel-header-->
-                <form action="/qlhs_ht/libs/function.php" method="POST">
+                <?php 
+                    $stt = 1;
+                        if(isset($_POST['search-lop'])){
+                            $id_namhoc = $_POST["id_namhoc"];
+                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs
+                                            WHERE pccn.id_namhoc = ".$id_namhoc." AND  pccn.magv = ".$_SESSION['user_gv']." ORDER BY pclh.id_pc_lh DESC
+                                                ";
+                            $dl = $conn->query($sql);
+                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh 
+                                            WHERE pccn.id_namhoc = ".$id_namhoc." AND  pccn.magv = ".$_SESSION['user_gv']."
+                                                ";
+                            $lop_cn = $conn->query($sql);
+                        }else{
+                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs
+                                            WHERE pccn.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong_cn) AND  pccn.magv = ".$_SESSION['user_gv']." ORDER BY pclh.id_pc_lh DESC
+                                                ";
+                            $dl = $conn->query($sql);
+                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh 
+                                            WHERE pccn.id_namhoc = (SELECT MAX(id_namhoc) FROM phancong_cn) AND  pccn.magv = ".$_SESSION['user_gv']."
+                                                ";
+                            $lop_cn = $conn->query($sql);
+                        }
+                 ?>
+                <form action="/qlhs/libs/function.php" method="POST">
                     <div class="panel-body">
                         <table cellpadding="10">
                             <tbody>
@@ -50,9 +73,8 @@
                                     <td><span>Lớp: </span></td>
                                     <td>
                                         <select name="id_pc_cn" id="">
-                                            <option value="">--chọn--</option>
                                             <?php 
-                                                    foreach($lop as $row ){
+                                                    foreach($lop_cn as $row ){
                                                          echo "
                                                         <option value=".$row['id_pc_cn'].">".$row['tenlop']."</option>
                                                         ";
@@ -86,7 +108,7 @@
             </form>
             <div class="list-row">
                     <div class="topnav">
-                        <a class="active" href="/qlhs_ht/gv//index.php">Trang chủ</a>
+                        <a class="active" href="/qlhs/gv/index.php">Trang chủ</a>
                         <div class="search-container">
                             <form action="" method="POST">
                                 <input type="text" placeholder="Search.." name="ten">
@@ -112,13 +134,7 @@
                                 </tr>
                                 <tr>
                                         <?php
-                                        $stt = 1;
-                                        if(isset($_POST['search-lop'])){
-                                            $id_namhoc = $_POST["id_namhoc"];
-                                            $sql = "SELECT * FROM phancong_cn pccn INNER JOIN lop l ON l.malh = pccn.malh INNER JOIN phancong_lh pclh ON pclh.id_pc_cn = pccn.id_pc_cn INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs
-                                            WHERE pccn.id_namhoc = ".$id_namhoc." AND  pccn.magv = ".$_SESSION['user_gv']." ORDER BY pclh.id_pc_lh DESC
-                                                ";
-                                            $dl = $conn->query($sql);
+                                        
                                             foreach($dl as $row){
                                                         echo "
                                                         <tr class='odd gradeX' id='hienthi'>
@@ -139,28 +155,7 @@
                                                         ";
                                                         $stt ++;
                                                     }
-                                        }else{
-                                            foreach($dl_lop as $row){
-                                                        echo "
-                                                        <tr class='odd gradeX' id='hienthi'>
-                                                            <td align='center'>
-                                                                ".$stt."
-                                                            </td>
-                                                            
-                                                            <td align='center'>".$row['hoten_dem']." ".$row['ten_hs']."</td>
-                                                            <td align='center'>".$row['mahs']."</td>
-                                                            <td align='center'>".$row['tenlop']."</td>
-                                                            <td align='center'>".$row['ngaysinh']."</td>
-                                                            <td align='center'>".$row['diachi']."</td>
-                                                            <td align='center'>".$row['sodt']."</td>
-                                                            <td align='center' style='width: 12%'>
-                                                                <a class='btn btn-xs btn-danger' align='center' href='delete.php?id_pc_lh=".$row['id_pc_lh']."'> <i class='fa fa-times'></i> Xoá</a>
-                                                            </td>
-                                                        </tr>
-                                                        ";
-                                                        $stt ++;
-                                                    }
-                                        }
+                                        
                                         if ($stt<=1) {
                                             echo "<tr class='odd gradeX' id='hienthi'>Không có dữ liệu</td>";
                                         }

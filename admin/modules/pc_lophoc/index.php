@@ -66,7 +66,7 @@
             <?php
                 if(isset($_POST['search'])){
                     $search = "ds";
-                    $sql_dl = "SELECT *  FROM phancong_lh pclh INNER JOIN phancong_cn pccn ON pccn.id_pc_cn = pclh.id_pc_cn INNER JOIN giaovien gv ON gv.magv = pccn.magv INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs INNER JOIN namhoc nh ON pccn.id_namhoc = nh.id_namhoc INNER JOIN lop l ON pccn.malh = l.malh WHERE nh.id_namhoc = ".$_POST['id_namhoc']." AND l.malh = ".$_POST['malh']." ORDER BY pclh.id_pc_lh DESC";
+                    $sql_dl = "SELECT *  FROM phancong_lh pclh INNER JOIN phancong_cn pccn ON pccn.id_pc_cn = pclh.id_pc_cn INNER JOIN giaovien gv ON gv.magv = pccn.magv INNER JOIN hocsinh hs ON hs.mahs = pclh.mahs INNER JOIN namhoc nh ON pccn.id_namhoc = nh.id_namhoc INNER JOIN lop l ON pccn.malh = l.malh WHERE nh.id_namhoc = ".$_POST['id_namhoc']." AND l.malh = ".$_POST['malh']." ORDER BY hs.mahs DESC";
                     $result_dlhs = $conn->query($sql_dl);
                 }
             ?>

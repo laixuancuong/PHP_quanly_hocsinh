@@ -1,6 +1,6 @@
 <?php session_start();
     if (!isset($_SESSION['user_gv'])){
-            header("location: /qlhs_ht/gv/login.php");
+            header("location: /qlhs/gv/login.php");
     }
     require_once __DIR__. "../../libs/database_gv.php";
     $sql = "SELECT hoten_dem, ten_gv FROM giaovien WHERE magv = ".$_SESSION['user_gv']."";
@@ -12,22 +12,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/icon-logo" href="/qlhs_ht/img/logo.png">
+    <link rel="shortcut icon" type="image/icon-logo" href="/qlhs/img/logo.png">
     <!--------------------------------css---------------------------------------------->
-    <link rel="stylesheet" type="text/css" href="/qlhs_ht/public/fontend/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/qlhs_ht/public/fontend/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="/qlhs_ht/public/fontend/css/box_show.css">
-    <link rel="stylesheet" type="text/css" href="/qlhs_ht/public/fontend/css/news.css">
-    <link rel="stylesheet" type="text/css" href="/qlhs_ht/public/fontend/css/list_row.css">
+    <link rel="stylesheet" type="text/css" href="/qlhs/public/fontend/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/qlhs/public/fontend/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/qlhs/public/fontend/css/box_show.css">
+    <link rel="stylesheet" type="text/css" href="/qlhs/public/fontend/css/news.css">
+    <link rel="stylesheet" type="text/css" href="/qlhs/public/fontend/css/list_row.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
     -->
     
-    <link rel="stylesheet" href="/qlhs_ht/public/fontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/qlhs/public/fontend/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- Page-Level Plugin CSS - Tables -->
-    <link href="/qlhs_ht/public/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/qlhs/public/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <!--------------------------------js---------------------------------------------->
+    <script src="/qlhs/gv/ajax.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -37,7 +38,7 @@
     <div class="header">
         <div class="wrap">
             <div class="header-left">
-                <a href="#"><img class="logo" src="/qlhs_ht/img/logo.png" /></a>
+                <a href="#"><img class="logo" src="/qlhs/img/logo.png" /></a>
                 <h4>Trường THPT chuyên Đại học Vinh</h4>
             </div>
             
@@ -107,7 +108,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            <a href="/qlhs_ht/gv/logout.php" class="btn-logout">
+                            <a href="/qlhs/gv/logout.php" class="btn-logout">
                                 <button id="btnLogout" type="button" class="btn lg"><i class="fas fa-sign-out-alt"></i><span class="lg">Đăng
                                         xuất</span></button>
                             </a>

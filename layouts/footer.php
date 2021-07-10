@@ -1,7 +1,7 @@
 <div class="footer">
         <div class="wrap">
             <div class="footer-left">
-                <img class="logo-ft" src="/qlhs_ht/img/logo.png" />
+                <img class="logo-ft" src="/qlhs/img/logo.png" />
                 <h4>Trường THPT chuyên Đại học Vinh</h4>
                 <p><i>Tạo dựng thế hệ trẻ</i></p>
             </div>
