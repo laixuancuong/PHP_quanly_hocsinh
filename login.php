@@ -28,7 +28,7 @@ require_once __DIR__. "../libs/connect.php";
         </div>
     </div>
     <!--end--header-->
-<div class="main-login">
+<div class="row main-login">
 <?php
     if(isset($_POST["dangnhap"]))
     {
@@ -94,7 +94,7 @@ require_once __DIR__. "../libs/connect.php";
 
         <div class="gt">
             <h4>Trường THPT chuyên Đại học Vinh</h4>
-            <img src="img/bg_login.jpg" alt="">
+            <img class="img-gt" src="img/bg_login.jpg" alt="">
         </div>
         <!--end--gt-->
 

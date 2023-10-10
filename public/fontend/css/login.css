@@ -5,6 +5,12 @@ body {
     box-sizing: border-box;
 }
 
+.row::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .main-login{
     width: 90%;
     margin: auto;
@@ -37,6 +43,9 @@ body {
     line-height: 2;
     border-bottom: 1px solid #2980b9;
     margin-bottom: 1%;
+}
+.img-gt {
+  width: 100%;
 }
 .sp{
   border-top: 1px solid #cccccc;

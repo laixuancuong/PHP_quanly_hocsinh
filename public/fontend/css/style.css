@@ -78,7 +78,7 @@ a.dropbtn {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  border: 1px 
+  border: 1px;
   min-width: 230px;
   overflow: auto;
   z-index: 1;
@@ -134,46 +134,7 @@ a.dropbtn {
     padding-left: 2%;
 }
 /*end*/
-/*#lbFullName{
-    color: #097fce;
-}
-.list-item td{
-    border-bottom: 1px solid #cccccc;
-}
-.list-item td:hover{
-    background-color: #ffffff;
-}
-.list-item td a{
-    color: #2980b9;
-}
-.list-item td a:hover{
-    color: #0444b9;
-}
-.nav-item .dropdown{
-    right: 0;
-}
-.btn-lo a{
-    text-align: center;
-}
-.nav-link :hover{
-    background-color: #2980b9;
 
-}
-.dropdown-item a:hover{
-    text-decoration: none;
-    background-color: none;
-}
-.item-icon-title{
-    color: #2980b9;
-    font-size: 14px;
-}
-.item-icon-small img{
-    width: 35px;
-    height: 35px;
-}
-.dropdown-item :hover{
-    background-color: #fff;
-}*/
 /*--main--*/
 .wrap-main{
     width: 90%;
@@ -248,4 +209,13 @@ a.dropbtn {
     padding-bottom: 1%;
     line-height: 1.5;
     border-top: 1px solid #ffffff;
+}
+
+/* //////////Tablet, mobile//////////// */
+
+@media (max-width: 63.9375em){
+    .header {
+        display: flex;
+        
+    }
 }
